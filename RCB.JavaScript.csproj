@@ -1,0 +1,103 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <UserSecretsId>8ab1d22e-d48e-47e0-bfdb-216b1e87429d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="obj\bin\**"/>
+    <Compile Remove="Properties\PublishProfiles\**"/>
+    <Compile Remove="publish\**"/>
+    <Content Remove="logs\**"/>
+    <Content Remove="wwwroot\**"/>
+    <Content Remove="ClientApp\**"/>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\**"/>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="logs\**"/>
+    <EmbeddedResource Remove="obj\bin\**"/>
+    <EmbeddedResource Remove="Properties\PublishProfiles\**"/>
+    <EmbeddedResource Remove="publish\**"/>
+    <None Remove="logs\**"/>
+    <None Remove="obj\bin\**"/>
+    <None Remove="Properties\PublishProfiles\**"/>
+    <None Remove="publish\**"/>
+    <None Remove="MailKit"/>
+    <None Remove="Microsoft.AspNetCore.Identity.UI"/>
+    <None Remove="Microsoft.AspNetCore.Identity"/>
+    <None Remove="Microsoft.EntityFrameworkCore"/>
+    <None Remove="Pomelo.EntityFrameworkCore.MySql"/>
+    <None Remove="Microsoft.EntityFrameworkCore.Design"/>
+    <None Remove="Microsoft.EntityFrameworkCore.Tools"/>
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer"/>
+    <None Remove="Microsoft.AspNetCore.Authorization"/>
+    <None Remove="System.Linq"/>
+    <None Remove="DTO\"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.5"/>
+    <PackageReference Include="Microsoft.AspNetCore.HttpOverrides" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.5"/>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5"/>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9"/>
+    <PackageReference Include="Serilog" Version="2.9.0"/>
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0"/>
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1"/>
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1"/>
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.27"/>
+    <PackageReference Include="MailKit" Version="2.9.0"/>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.7"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.27"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.27">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.27"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.1.27"/>
+    <PackageReference Include="System.Linq" Version="4.3.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.28"/>
+    <PackageReference Include="AWSSDK.S3" Version="3.7.9.66"/>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.2"/>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="wwwroot\favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Properties\launchSettings.json">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTO\"/>
+  </ItemGroup>
+  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And (!Exists('wwwroot\dist') OR Exists('wwwroot\dist\production_build')) ">
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode"/>
+    </Exec>
+    <Exec Command="npm run build:dev"/>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE."/>
+  </Target>
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <Exec Command="npm install"/>
+    <Exec Command="npm run build:prod"/>
+    <ItemGroup>
+      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" Exclude="wwwroot\dist\production_build"/>
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>

@@ -1,0 +1,69 @@
+// flipperContainer
+/* hide back of pane during swap */
+/* front pane, placed above back */
+/* back, initially hidden pane */
+* {
+	font-family: Raleway, sans-serif;
+}
+.flipperContainer {
+	border-radius: 35px;
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+	width: 300px;
+	height: 500px;
+	position: relative;
+	margin: 20px auto;
+	&:hover {
+		.flipper {
+			-webkit-transform: rotateY(180deg);
+			transform: rotateY(180deg);
+		}
+	}
+}
+.cardFront {
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+	width: 300px;
+	height: 500px;
+	position: relative;
+	margin: 0 auto;
+	z-index: 99;
+	-webkit-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+}
+.cardBack {
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+	width: 300px;
+	height: 500px;
+	position: relative;
+	margin: 0 auto;
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+.flipperContainer.hover {
+	.flipper {
+		-webkit-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+}
+.flipper {
+	-webkit-transition: 1s;
+	-o-transition: 1s;
+	transition: 1s;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	border-radius: 35px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.flex {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 10px;
+}

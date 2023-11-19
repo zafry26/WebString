@@ -1,0 +1,10 @@
+{"Timestamp":"2022-07-29T16:52:33.6415800+08:00","Level":"Information","MessageTemplate":"Now listening on: {address}","Properties":{"address":"http://[::]:7000","SourceContext":"Microsoft.Hosting.Lifetime"}}
+{"Timestamp":"2022-07-29T16:52:33.7222923+08:00","Level":"Information","MessageTemplate":"Application started. Press Ctrl+C to shut down.","Properties":{"SourceContext":"Microsoft.Hosting.Lifetime"}}
+{"Timestamp":"2022-07-29T16:52:33.7232120+08:00","Level":"Information","MessageTemplate":"Hosting environment: {envName}","Properties":{"envName":"Production","SourceContext":"Microsoft.Hosting.Lifetime"}}
+{"Timestamp":"2022-07-29T16:52:33.7240258+08:00","Level":"Information","MessageTemplate":"Content root path: {contentRoot}","Properties":{"contentRoot":"C:\\Users\\zahfizafry.zainal\\Desktop\\WebString\\WebString","SourceContext":"Microsoft.Hosting.Lifetime"}}
+{"Timestamp":"2022-07-29T16:52:59.4883906+08:00","Level":"Information","MessageTemplate":"Application is shutting down...","Properties":{"SourceContext":"Microsoft.Hosting.Lifetime"}}
+{"Timestamp":"2022-07-29T16:54:17.5704088+08:00","Level":"Information","MessageTemplate":"Now listening on: {address}","Properties":{"address":"http://[::]:7000","SourceContext":"Microsoft.Hosting.Lifetime"}}
+{"Timestamp":"2022-07-29T16:54:17.6352651+08:00","Level":"Information","MessageTemplate":"Application started. Press Ctrl+C to shut down.","Properties":{"SourceContext":"Microsoft.Hosting.Lifetime"}}
+{"Timestamp":"2022-07-29T16:54:17.6359102+08:00","Level":"Information","MessageTemplate":"Hosting environment: {envName}","Properties":{"envName":"Production","SourceContext":"Microsoft.Hosting.Lifetime"}}
+{"Timestamp":"2022-07-29T16:54:17.6365230+08:00","Level":"Information","MessageTemplate":"Content root path: {contentRoot}","Properties":{"contentRoot":"C:\\Users\\zahfizafry.zainal\\Desktop\\WebString\\WebString","SourceContext":"Microsoft.Hosting.Lifetime"}}
+{"Timestamp":"2022-07-29T16:54:58.3784346+08:00","Level":"Information","MessageTemplate":"Application is shutting down...","Properties":{"SourceContext":"Microsoft.Hosting.Lifetime"}}

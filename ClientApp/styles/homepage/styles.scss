@@ -1,0 +1,28 @@
+@import url('https://unpkg.com/css-pro-layout/dist/css/css-pro-layout.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import './_variables';
+@import './_layout';
+@import './_sidebar';
+@import './_menu';
+@import 'bootstrap';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  color: #212529;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  #btn-collapse {
+    display: none;
+  }
+}

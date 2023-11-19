@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "lib": ["es2018", "dom"],
+    "baseUrl": "ClientApp",
+    "target": "es5",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@Store/*": ["./store/*"],
+      "@Core/*": ["./core/*"],
+      "@Components/*": ["./components/*"],
+      "@Images/*": ["./images/*"],
+      "@Styles/*": ["./styles/*"],
+      "@Pages/*": ["./pages/*"],
+      "@Layouts/*": ["./layouts/*"],
+      "@Services/*": ["./services/*"],
+      "@Utils": ["./utils.ts"],
+      "@WebCastUtils": ["./utils-webcast.ts"]
+    }
+  },
+  "exclude": ["bin", "node_modules", "AspNet"]
+}
