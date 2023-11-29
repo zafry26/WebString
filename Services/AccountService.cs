@@ -93,7 +93,7 @@ namespace RCB.JavaScript.Services
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim("DateOfJoin", user.Created.ToString("yyyy-MM-dd")),
+                new Claim("DateOfJoin", user.Created?.ToString("yyyy-MM-dd")),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

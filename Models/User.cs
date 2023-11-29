@@ -27,7 +27,7 @@ namespace RCB.JavaScript.Models
         public string Password { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Created { get; set; }
+        public DateTime? Created { get; set; }
 
         [AllowNull]
         public Hero Hero { get; set; }
