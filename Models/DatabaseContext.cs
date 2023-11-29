@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Protocols;
 using RCB.JavaScript.Models;
 
 namespace RCB.JavaScript.Models
@@ -18,8 +22,12 @@ namespace RCB.JavaScript.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string cn = @"";
-                optionsBuilder.UseMySql(cn);
+                var builder = new ConfigurationBuilder()
+                             .SetBasePath(Directory.GetCurrentDirectory())
+                             .AddJsonFile($"appsettings.Development.json");
+                var config = builder.Build();
+                var connectionString = config.GetConnectionString("WebStringConnection");
+                optionsBuilder.UseSqlServer(connectionString);
 
                 base.OnConfiguring(optionsBuilder);
             }

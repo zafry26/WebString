@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RCB.JavaScript.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class firstmigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,10 +12,9 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -29,12 +27,11 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     PaymentCode = table.Column<string>(nullable: true),
                     PaymentName = table.Column<string>(nullable: true),
                     PaymentStatus = table.Column<bool>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -43,14 +40,32 @@ namespace RCB.JavaScript.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Developers",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Username = table.Column<string>(maxLength: 50, nullable: false),
+                    Email = table.Column<string>(maxLength: 50, nullable: false),
+                    PhoneNumber = table.Column<string>(maxLength: 50, nullable: false),
+                    Skillsets = table.Column<string>(maxLength: 500, nullable: false),
+                    Hobby = table.Column<string>(maxLength: 500, nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Developers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RoleName = table.Column<string>(maxLength: 50, nullable: false),
                     Created = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn)
                 },
                 constraints: table =>
                 {
@@ -62,13 +77,12 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     UserName = table.Column<string>(maxLength: 50, nullable: false),
                     Password = table.Column<string>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn)
                 },
                 constraints: table =>
                 {
@@ -80,7 +94,7 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(maxLength: 100, nullable: true),
                     DisplayName = table.Column<string>(maxLength: 50, nullable: false),
                     Standout = table.Column<string>(maxLength: 50, nullable: true),
@@ -88,8 +102,7 @@ namespace RCB.JavaScript.Migrations
                     LinkedInUrl = table.Column<string>(maxLength: 500, nullable: true),
                     InstagramUrl = table.Column<string>(maxLength: 500, nullable: true),
                     BackgroundImage = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     UserForeignKey = table.Column<int>(nullable: true)
                 },
@@ -109,15 +122,14 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StoreName = table.Column<string>(maxLength: 100, nullable: true),
                     Standout = table.Column<string>(maxLength: 50, nullable: true),
                     FbUrl = table.Column<string>(maxLength: 500, nullable: true),
                     LinkedInUrl = table.Column<string>(maxLength: 500, nullable: true),
                     InstagramUrl = table.Column<string>(maxLength: 500, nullable: true),
                     Logo = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     UserForeignKey = table.Column<int>(nullable: true)
                 },
@@ -137,15 +149,14 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Qualification = table.Column<string>(maxLength: 100, nullable: true),
                     FromYear = table.Column<string>(nullable: true),
                     ToYear = table.Column<string>(nullable: true),
                     University = table.Column<string>(maxLength: 100, nullable: true),
                     State = table.Column<string>(maxLength: 20, nullable: true),
                     Country = table.Column<string>(maxLength: 20, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -165,7 +176,7 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     PositionTitle = table.Column<string>(maxLength: 100, nullable: true),
                     FromYear = table.Column<string>(nullable: true),
                     ToYear = table.Column<string>(nullable: true),
@@ -173,8 +184,7 @@ namespace RCB.JavaScript.Migrations
                     City = table.Column<string>(maxLength: 20, nullable: true),
                     State = table.Column<string>(maxLength: 20, nullable: true),
                     Country = table.Column<string>(maxLength: 20, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -194,12 +204,11 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(maxLength: 200, nullable: true),
                     Category = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -219,12 +228,11 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(maxLength: 200, nullable: true),
                     Title = table.Column<string>(maxLength: 100, nullable: true),
                     Detail = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -244,14 +252,13 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Summary = table.Column<string>(maxLength: 300, nullable: true),
                     City = table.Column<string>(maxLength: 20, nullable: true),
                     State = table.Column<string>(maxLength: 20, nullable: true),
                     Country = table.Column<string>(maxLength: 20, nullable: true),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -271,12 +278,11 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(maxLength: 200, nullable: true),
                     Title = table.Column<string>(maxLength: 100, nullable: true),
                     Detail = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -296,10 +302,9 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     AdmStoreCategoryForeignKey = table.Column<long>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     StoreSummaryForeignKey = table.Column<long>(nullable: true)
                 },
@@ -325,10 +330,9 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     AdmStorePaymentForeignKey = table.Column<long>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     StoreSummaryId = table.Column<long>(nullable: true)
                 },
@@ -354,10 +358,9 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     WorkScope = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     ExperienceForeignKey = table.Column<long>(nullable: true)
                 },
@@ -377,13 +380,12 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(maxLength: 50, nullable: true),
                     Category = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Detail = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     PortfolioForeignKey = table.Column<long>(nullable: true)
                 },
@@ -403,11 +405,10 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SizeCode = table.Column<string>(maxLength: 10, nullable: true),
                     SizeName = table.Column<string>(maxLength: 50, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     StoreCategoryForeignKey = table.Column<long>(nullable: true)
                 },
@@ -427,10 +428,9 @@ namespace RCB.JavaScript.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(maxLength: 50, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<long>(nullable: false),
                     PortfolioDetailForeignKey = table.Column<long>(nullable: true)
                 },
@@ -438,7 +438,7 @@ namespace RCB.JavaScript.Migrations
                 {
                     table.PrimaryKey("PK_HeroPortfolioImages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HeroPortfolioImages_HeroPortfolioDetails_PortfolioDetailFore~",
+                        name: "FK_HeroPortfolioImages_HeroPortfolioDetails_PortfolioDetailForeignKey",
                         column: x => x.PortfolioDetailForeignKey,
                         principalTable: "HeroPortfolioDetails",
                         principalColumn: "Id",
@@ -449,7 +449,8 @@ namespace RCB.JavaScript.Migrations
                 name: "IX_Hero_UserForeignKey",
                 table: "Hero",
                 column: "UserForeignKey",
-                unique: true);
+                unique: true,
+                filter: "[UserForeignKey] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HeroEducations_HeroForeignKey",
@@ -470,7 +471,8 @@ namespace RCB.JavaScript.Migrations
                 name: "IX_HeroPortfolioDetails_PortfolioForeignKey",
                 table: "HeroPortfolioDetails",
                 column: "PortfolioForeignKey",
-                unique: true);
+                unique: true,
+                filter: "[PortfolioForeignKey] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HeroPortfolioImages_PortfolioDetailForeignKey",
@@ -491,7 +493,8 @@ namespace RCB.JavaScript.Migrations
                 name: "IX_HeroSummaries_HeroForeignKey",
                 table: "HeroSummaries",
                 column: "HeroForeignKey",
-                unique: true);
+                unique: true,
+                filter: "[HeroForeignKey] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HeroTechnicals_HeroForeignKey",
@@ -502,7 +505,8 @@ namespace RCB.JavaScript.Migrations
                 name: "IX_StoreCategories_AdmStoreCategoryForeignKey",
                 table: "StoreCategories",
                 column: "AdmStoreCategoryForeignKey",
-                unique: true);
+                unique: true,
+                filter: "[AdmStoreCategoryForeignKey] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StoreCategories_StoreSummaryForeignKey",
@@ -518,7 +522,8 @@ namespace RCB.JavaScript.Migrations
                 name: "IX_StorePayments_AdmStorePaymentForeignKey",
                 table: "StorePayments",
                 column: "AdmStorePaymentForeignKey",
-                unique: true);
+                unique: true,
+                filter: "[AdmStorePaymentForeignKey] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StorePayments_StoreSummaryId",
@@ -529,11 +534,15 @@ namespace RCB.JavaScript.Migrations
                 name: "IX_StoreSummaries_UserForeignKey",
                 table: "StoreSummaries",
                 column: "UserForeignKey",
-                unique: true);
+                unique: true,
+                filter: "[UserForeignKey] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Developers");
+
             migrationBuilder.DropTable(
                 name: "HeroEducations");
 

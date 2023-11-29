@@ -40,7 +40,7 @@ namespace RCB.JavaScript
 
             services.AddDbContext<DatabaseContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:WebStringConnection"]);
+                options.UseSqlServer(Configuration["ConnectionStrings:WebStringConnection"]);
             });
 
             // Add your own services here.
