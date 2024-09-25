@@ -26,7 +26,7 @@ namespace RCB.JavaScript.Models
                              .SetBasePath(Directory.GetCurrentDirectory())
                              .AddJsonFile($"appsettings.Development.json");
                 var config = builder.Build();
-                var connectionString = config.GetConnectionString("WebStringConnection");
+                var connectionString = config.GetConnectionString("FreeProject");
                 optionsBuilder.UseSqlServer(connectionString);
 
                 base.OnConfiguring(optionsBuilder);
@@ -53,5 +53,58 @@ namespace RCB.JavaScript.Models
         public DbSet<StoreCategorySize> StoreCategorySizes { get; set; }
         public DbSet<StorePayment> StorePayments { get; set; }
         public DbSet<StoreSummary> StoreSummaries { get; set; }
+
+        //FLUENT API. TO GIVE DEFAULT VALUE TO INSERTED ROW.
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<Hero>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+
+            modelBuilder.Entity<HeroSummary>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<HeroEducation>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<HeroExperience>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<HeroExperienceDetail>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<HeroService>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<HeroTechnical>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<HeroPortfolio>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<HeroPortfolioDetail>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<HeroPortfolioImage>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+
+            modelBuilder.Entity<Developer>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("GetUtcDate()");
+        }
     }
 }

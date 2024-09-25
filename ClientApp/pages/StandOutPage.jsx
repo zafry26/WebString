@@ -115,7 +115,7 @@ const StandOutPage = (props) => {
         if (!response.hasErrors) {
           setInitialValues((initialValues) => ({
             ...initialValues,
-            ...response.value.value,
+            ...response.value,
           }));
         }
       });

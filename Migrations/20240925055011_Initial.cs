@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RCB.JavaScript.Migrations
 {
-    public partial class firstmigrations : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,7 +50,7 @@ namespace RCB.JavaScript.Migrations
                     PhoneNumber = table.Column<string>(maxLength: 50, nullable: false),
                     Skillsets = table.Column<string>(maxLength: 500, nullable: false),
                     Hobby = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -65,7 +65,7 @@ namespace RCB.JavaScript.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoleName = table.Column<string>(maxLength: 50, nullable: false),
-                    Created = table.Column<DateTime>(nullable: false)
+                    CreatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,7 +82,7 @@ namespace RCB.JavaScript.Migrations
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     UserName = table.Column<string>(maxLength: 50, nullable: false),
                     Password = table.Column<string>(nullable: false),
-                    Created = table.Column<DateTime>(nullable: false)
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()")
                 },
                 constraints: table =>
                 {
@@ -102,7 +102,7 @@ namespace RCB.JavaScript.Migrations
                     LinkedInUrl = table.Column<string>(maxLength: 500, nullable: true),
                     InstagramUrl = table.Column<string>(maxLength: 500, nullable: true),
                     BackgroundImage = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     UserForeignKey = table.Column<int>(nullable: true)
                 },
@@ -156,7 +156,7 @@ namespace RCB.JavaScript.Migrations
                     University = table.Column<string>(maxLength: 100, nullable: true),
                     State = table.Column<string>(maxLength: 20, nullable: true),
                     Country = table.Column<string>(maxLength: 20, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -184,7 +184,7 @@ namespace RCB.JavaScript.Migrations
                     City = table.Column<string>(maxLength: 20, nullable: true),
                     State = table.Column<string>(maxLength: 20, nullable: true),
                     Country = table.Column<string>(maxLength: 20, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -208,7 +208,7 @@ namespace RCB.JavaScript.Migrations
                     Image = table.Column<string>(maxLength: 200, nullable: true),
                     Category = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -232,7 +232,7 @@ namespace RCB.JavaScript.Migrations
                     Image = table.Column<string>(maxLength: 200, nullable: true),
                     Title = table.Column<string>(maxLength: 100, nullable: true),
                     Detail = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -258,7 +258,7 @@ namespace RCB.JavaScript.Migrations
                     State = table.Column<string>(maxLength: 20, nullable: true),
                     Country = table.Column<string>(maxLength: 20, nullable: true),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -282,7 +282,7 @@ namespace RCB.JavaScript.Migrations
                     Image = table.Column<string>(maxLength: 200, nullable: true),
                     Title = table.Column<string>(maxLength: 100, nullable: true),
                     Detail = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     HeroForeignKey = table.Column<long>(nullable: true)
                 },
@@ -360,7 +360,7 @@ namespace RCB.JavaScript.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     WorkScope = table.Column<string>(maxLength: 500, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     ExperienceForeignKey = table.Column<long>(nullable: true)
                 },
@@ -385,7 +385,7 @@ namespace RCB.JavaScript.Migrations
                     Category = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Detail = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     PortfolioForeignKey = table.Column<long>(nullable: true)
                 },
@@ -430,7 +430,7 @@ namespace RCB.JavaScript.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Image = table.Column<string>(maxLength: 50, nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetUtcDate()"),
                     CreatedBy = table.Column<long>(nullable: false),
                     PortfolioDetailForeignKey = table.Column<long>(nullable: true)
                 },

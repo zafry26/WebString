@@ -18,6 +18,6 @@ namespace RCB.JavaScript.Models
         public string RoleName { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Created { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

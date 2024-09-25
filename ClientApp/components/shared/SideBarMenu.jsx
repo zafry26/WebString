@@ -71,50 +71,34 @@ const SideBarMenu = () => {
                   </ul>
                 </div>
               </li>
-              {/* <li className="menu-item sub-menu">
+              <li className="menu-item sub-menu">
                 <a>
                   <span className="menu-icon">
                     <i className="ri-shopping-cart-fill"></i>
                   </span>
-                  <span className="menu-title">WebShop</span>
+                  <span className="menu-title">Webcast</span>
                   <span className="menu-suffix">&#x1F525;</span>
                 </a>
                 <div className="sub-menu-list">
                   <ul>
                     <li className="menu-item">
                       <NavLink
-                        to="/webshop-insights"
+                        to="/webcast-manage"
                         activeStyle={{ color: "yellow" }}
                       >
-                        <span className="menu-title">Insights</span>
-                      </NavLink>
-                    </li>
-                    <li className="menu-item">
-                      <NavLink
-                        to="/webshop-shop"
-                        activeStyle={{ color: "yellow" }}
-                      >
-                        <span className="menu-title">Store</span>
-                      </NavLink>
-                    </li>
-                    <li className="menu-item">
-                      <NavLink
-                        to="/webshop-inventory"
-                        activeStyle={{ color: "yellow" }}
-                      >
-                        <span className="menu-title">Inventory</span>
+                        <span className="menu-title">Standout</span>
                       </NavLink>
                     </li>
                   </ul>
                 </div>
-              </li> */}
+              </li>
               {/* <li className="menu-item sub-menu">
                   <a style={{ "pointer-events" : "none", "cursor":"default"}}>
                     <span className="menu-icon">
                       <i className="ri-global-fill"></i>
                     </span>
                     <span className="menu-title">WebTour</span>
-                    <span style={{ background : "url( "+ ComingSoon + ")", width:"50px", height: "50px", backgroundSize:"cover", backgroundRepeat: "no-repeat" }} className="menu-suffix"></span> 
+                    <span style={{ background : "url( "+ ComingSoon + ")", width:"50px", height: "50px", backgroundSize:"cover", backgroundRepeat: "no-repeat" }} className="menu-suffix"></span>
                   </a>
                   <div className="sub-menu-list">
                     <ul>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
@@ -27,7 +28,7 @@ namespace RCB.JavaScript.Models
         public string Password { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime? Created { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [AllowNull]
         public Hero Hero { get; set; }
